@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	routes "go_rest_api/routes"
 	"log"
 	"net/http"
+
+	"go_rest_api/routes"
 
 	"github.com/gorilla/mux"
 )
