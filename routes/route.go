@@ -13,6 +13,14 @@ var (
 	repo repository.PostRepository = repository.NewPostrepository()
 )
 
+// GetPosts godoc
+// @Summary Get details of all posts
+// @Description Get details of all posts
+// @Tags posts
+// @Accept  json
+// @Produce  json
+// @Success 200 {array} entity.Post
+// @Router /posts [get]
 func GetPosts(resp http.ResponseWriter, req *http.Request) {
 	resp.Header().Set("content-type", "application/json")
 	posts, err := repo.FindAll()
@@ -26,6 +34,15 @@ func GetPosts(resp http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(resp).Encode(posts)
 }
 
+// AddPost godoc
+// @Summary Add a new post
+// @Description Add a new post
+// @Tags posts
+// @Accept  json
+// @Produce  json
+// @Param post body entity.Post true "Create post"
+// @Success 200 {object} entity.Post
+// @Router /posts [post]
 func AddPost(resp http.ResponseWriter, req *http.Request) {
 	resp.Header().Set("content-type", "application/json")
 	var post entity.Post
